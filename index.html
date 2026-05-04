@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arya (MAC) | Orbital View Portfolio</title>
+  <meta name="description" content="Personal portfolio of Arya (MAC) - Build. Ship. Scale." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;400;600;700&family=Share+Tech+Mono&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <!-- Cosmic Background Layers -->
+  <div class="cosmic-bg"></div>
+  <div class="cosmic-overlay"></div>
+
+  <!-- Custom Cursor -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+
+  <!-- Space Canvas Background -->
+  <canvas id="space-canvas"></canvas>
+  <div class="vignette-overlay"></div>
+
+  <!-- Navigation -->
+  <nav class="sticky-nav">
+    <div class="nav-logo">ARYA<span style="color: var(--color-primary);">.</span></div>
+    <div class="nav-links">
+      <a href="#about">ABOUT</a>
+      <a href="#projects">WORK</a>
+      <a href="#experience">JOURNEY</a>
+      <a href="#skills">SKILLS</a>
+      <a href="#contact">CONTACT</a>
+    </div>
+    <div class="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav Overlay -->
+  <div class="mobile-nav-overlay">
+    <div class="close-menu">&times;</div>
+    <div class="mobile-nav-links">
+      <a href="#about">ABOUT</a>
+      <a href="#projects">WORK</a>
+      <a href="#experience">JOURNEY</a>
+      <a href="#skills">SKILLS</a>
+      <a href="#contact">CONTACT</a>
+    </div>
+  </div>
+
+  <!-- 1. HERO -->
+  <section id="hero" class="section hero-section">
+    <!-- Cinematic Video Background -->
+    <div class="video-background-container">
+      <video autoplay loop muted playsinline id="bg-video">
+        <source src="/Intersteller.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div class="hero-top-left nav-logo" style="position: absolute; z-index: 10;">ARYA<span style="color: var(--color-primary);">.</span></div>
+
+    <div class="hero-top-right hud-text">
+      <div>⌖ Gujarat, India</div>
+      <div>23.0° N 72.6° E</div>
+    </div>
+
+    <div class="hero-bottom-left reveal">
+      <h1 class="hero-title">
+        <span class="reveal delay-1">Build.</span>
+        <span class="reveal delay-2">Ship.</span>
+        <span class="reveal delay-3">Scale.</span>
+      </h1>
+      <p class="hero-subtitle reveal delay-4">Crafted to perform. Built to close.</p>
+    </div>
+
+    <div class="hero-center-bottom reveal delay-4">
+      <a href="#about" class="pill-btn">Scroll to Explore</a>
+    </div>
+
+    <div class="hero-bottom-right hud-text">
+      <div>LOW EARTH ORBIT</div>
+      <div>370 &ndash; 420 km</div>
+    </div>
+  </section>
+
+  <!-- 2. ABOUT -->
+  <section id="about" class="section about-section">
+    <div class="content-container left-content max-w-520">
+      <div class="section-label reveal">// WHO I AM</div>
+      <h2 class="section-heading reveal delay-1">Young. Hungry. Building.</h2>
+      <p class="body-text reveal delay-2">
+        I'm Arya (MAC) — 21 years old, Gujarat. I co-run SureSafe (fire safety) and hold a 20% stake in a web dev firm.
+        I write
+        code, close sales, and manage finance. I don't just build products — I build businesses.
+      </p>
+      <div class="stat-row reveal delay-3">
+        <div class="stat-item">
+          <div class="stat-number" data-target="2">+</div>
+          <div class="stat-label">Ventures</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="2">+</div>
+          <div class="stat-label">Years</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="10">+</div>
+          <div class="stat-label">Clients</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. PROJECTS -->
+  <section id="projects" class="section projects-intro">
+    <div class="content-container center-content">
+      <div class="section-label reveal">// SELECTED WORK</div>
+      <h2 class="giant-heading reveal delay-1">The Work.</h2>
+    </div>
+  </section>
+
+  <section class="section project-panel">
+    <div class="project-hologram reveal">
+      <iframe src="https://suresafe-rcai.vercel.app" title="SureSafe Preview"></iframe>
+      <div class="hologram-overlay"></div>
+    </div>
+    <div class="content-container right-content">
+      <div class="project-number reveal">01</div>
+      <h2 class="project-title reveal delay-1">SureSafe</h2>
+      <p class="body-text reveal delay-2">Comprehensive platform for fire safety products and equipment management.</p>
+      <div class="tags reveal delay-3">
+        <span class="tag">React</span><span class="tag">Vite</span><span class="tag">Tailwind</span><span
+          class="tag">Node.js</span><span class="tag">MongoDB</span><span class="tag">Vercel</span>
+      </div>
+      <a href="https://suresafe-rcai.vercel.app" target="_blank" class="view-link reveal delay-4">VIEW PROJECT
+        &rarr;</a>
+    </div>
+  </section>
+
+  <section class="section project-panel pure-space">
+    <div class="project-hologram reveal">
+      <div class="holo-placeholder-text">[ SYSTEM PREVIEW CLASSIFIED ]</div>
+      <div class="hologram-overlay"></div>
+    </div>
+    <div class="content-container right-content">
+      <div class="project-number reveal">02</div>
+      <h2 class="project-title reveal delay-1">Bulk ID Card Generator</h2>
+      <p class="body-text reveal delay-2">Automated system for creating and managing employee ID cards at scale.</p>
+      <div class="tags reveal delay-3">
+        <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
+      </div>
+      <a href="#" class="view-link reveal delay-4">VIEW PROJECT &rarr;</a>
+    </div>
+  </section>
+
+  <section class="section project-panel pure-space">
+    <div class="project-hologram reveal">
+      <div class="holo-placeholder-text">[ ACCESSING DATA LOGS... ]</div>
+      <div class="hologram-overlay"></div>
+    </div>
+    <div class="content-container right-content">
+      <div class="project-number reveal">03</div>
+      <h2 class="project-title reveal delay-1">Web Dev Venture</h2>
+      <p class="body-text reveal delay-2">Partnership delivering high-performance web applications and digital
+        experiences.</p>
+      <div class="tags reveal delay-3">
+        <span class="tag">Business</span><span class="tag">React</span><span class="tag">Client Relations</span>
+      </div>
+      <a href="#" class="view-link reveal delay-4">VIEW PROJECT &rarr;</a>
+    </div>
+  </section>
+
+  <!-- 4. EXPERIENCE -->
+  <section id="experience" class="section experience-section">
+    <div class="content-container center-content">
+      <h2 class="section-heading reveal">The Journey.</h2>
+      <div class="timeline">
+        <div class="timeline-entry reveal">
+          <div class="time-period">2025–NOW</div>
+          <div class="role">Co-Founder</div>
+          <div class="company">SureSafe</div>
+          <p class="desc">Leading fire safety solutions</p>
+        </div>
+        <div class="timeline-divider"></div>
+        <div class="timeline-entry reveal delay-1">
+          <div class="time-period">2026–NOW</div>
+          <div class="role">Partner</div>
+          <div class="company">Web Dev Firm</div>
+          <p class="desc">Building scalable web apps</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. SKILLS -->
+  <section id="skills" class="section skills-section pure-space">
+    <div class="content-container center-content w-full max-w-1000">
+      <div class="section-label reveal">// SKILL_MATRIX</div>
+      <h2 class="section-heading reveal delay-1">Capabilities.</h2>
+      <div class="skills-grid reveal delay-2">
+        <div class="skill-col">
+          <h3 class="col-title">FRONTEND</h3>
+          <div class="skill-item">
+            <div class="skill-info"><span>React</span><span>85%</span></div>
+            <div class="skill-bar">
+              <div class="skill-fill" data-width="85%"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info"><span>Tailwind</span><span>90%</span></div>
+            <div class="skill-bar">
+              <div class="skill-fill" data-width="90%"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info"><span>JS</span><span>80%</span></div>
+            <div class="skill-bar">
+              <div class="skill-fill" data-width="80%"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info"><span>HTML+CSS</span><span>95%</span></div>
+            <div class="skill-bar">
+              <div class="skill-fill" data-width="95%"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info"><span>Vite</span><span>80%</span></div>
+            <div class="skill-bar">
+              <div class="skill-fill" data-width="80%"></div>
+            </div>
+          </div>
+        </div>
+        <div class="skill-col">
+          <h3 class="col-title">BACKEND</h3>
+          <div class="skill-item">
+            <div class="skill-info"><span>Node.js</span><span>75%</span></div>
+            <div class="skill-bar">
+              <div class="skill-fill" data-width="75%"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info"><span>Express</span><span>75%</span></div>
+            <div class="skill-bar">
+              <div class="skill-fill" data-width="75%"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info"><span>MongoDB</span><span>70%</span></div>
+            <div class="skill-bar">
+              <div class="skill-fill" data-width="70%"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info"><span>Mongoose</span><span>70%</span></div>
+            <div class="skill-bar">
+              <div class="skill-fill" data-width="70%"></div>
+            </div>
+          </div>
+        </div>
+        <div class="skill-col">
+          <h3 class="col-title">BUSINESS</h3>
+          <div class="skill-item">
+            <div class="skill-info"><span>Sales</span><span>90%</span></div>
+            <div class="skill-bar">
+              <div class="skill-fill" data-width="90%"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info"><span>Client Acquisition</span><span>85%</span></div>
+            <div class="skill-bar">
+              <div class="skill-fill" data-width="85%"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info"><span>Finance</span><span>70%</span></div>
+            <div class="skill-bar">
+              <div class="skill-fill" data-width="70%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. CONTACT -->
+  <section id="contact" class="section contact-section">
+    <div class="content-container left-content">
+      <div class="section-label reveal">// OPEN CHANNEL</div>
+      <h2 class="contact-heading reveal delay-1">Let's build<br>something.</h2>
+      <p class="contact-sub reveal delay-2">Based in Gujarat. Available worldwide.</p>
+
+      <form id="contact-form" action="https://formspree.io/f/YOUR_ID" method="POST" class="reveal delay-3">
+        <div class="form-row">
+          <input type="text" name="name" placeholder="NAME" required>
+          <input type="email" name="email" placeholder="EMAIL" required>
+        </div>
+        <div class="form-row">
+          <input type="tel" name="phone" placeholder="PHONE">
+          <select name="budget" required>
+            <option value="" disabled selected>BUDGET</option>
+            <option value="Under ₹50K">Under ₹50K</option>
+            <option value="₹50K–₹2L">₹50K–₹2L</option>
+            <option value="₹2L+">₹2L+</option>
+            <option value="Let's Discuss">Let's Discuss</option>
+          </select>
+        </div>
+        <textarea name="message" rows="4" placeholder="MESSAGE" required></textarea>
+        <button type="submit" class="submit-btn">TRANSMIT MESSAGE</button>
+        <div id="form-status" class="form-status"></div>
+      </form>
+
+      <a href="https://wa.me/91XXXXXXXXXX?text=Hi%20Arya%2C%20I%20saw%20your%20portfolio." target="_blank"
+        class="whatsapp-cta reveal delay-4">⚡ MESSAGE ON WHATSAPP</a>
+    </div>
+  </section>
+
+  <script type="module" src="/main.js"></script>
+</body>
+
+</html>
