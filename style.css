@@ -63,10 +63,10 @@ p, .body-text, .desc { text-shadow: 0 0 15px rgba(4,5,10,0.9); }
 .nav-links a:hover { color: var(--color-primary); }
 
 /* Canvas */
-#space-canvas { position: fixed; top: 0; left: 0; z-index: -2; pointer-events: none; }
+#space-canvas { position: fixed; top: 0; left: 0; z-index: 1; pointer-events: none; }
 .vignette-overlay {
   position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-  background: linear-gradient(to right, rgba(4,5,10,0.98) 0%, rgba(4,5,10,0.8) 30%, rgba(4,5,10,0.4) 60%, rgba(4,5,10,0.0) 100%);
+  background: radial-gradient(circle, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.75) 100%);
   pointer-events: none; z-index: 5;
 }
 
@@ -80,7 +80,7 @@ p, .body-text, .desc { text-shadow: 0 0 15px rgba(4,5,10,0.9); }
 @keyframes cosmicDrift { 0% { transform: scale(1); } 100% { transform: scale(1.05); } }
 .cosmic-overlay {
   position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-  background: radial-gradient(ellipse at bottom right, rgba(0,20,40,0.4) 0%, rgba(4,5,10,0.8) 50%, rgba(0,0,0,1) 100%);
+  background: rgba(0,0,0,0.45);
   z-index: -2; pointer-events: none;
 }
 
@@ -96,18 +96,19 @@ p, .body-text, .desc { text-shadow: 0 0 15px rgba(4,5,10,0.9); }
 /* 1. Cinematic Video Background */
 .video-background-container {
   position: fixed; top: 50%; left: 50%; width: 100vw; height: 100vh;
-  transform: translate(-50%, -50%); z-index: -3; pointer-events: none; overflow: hidden; background: #000;
+  transform: translate(-50%, -50%); z-index: -1; pointer-events: none; overflow: hidden; background: #000;
 }
 .video-background-container video {
   position: absolute; top: 50%; left: 50%; width: 100vw; height: 100vh;
   object-fit: cover;
   transform: translate(-50%, -50%); pointer-events: none;
   opacity: 0;
+  filter: brightness(1.1) contrast(1.1) saturate(1.05);
   animation: fadeVideoIn 2s ease 0.5s forwards;
 }
 @keyframes fadeVideoIn {
   0% { opacity: 0; }
-  100% { opacity: 1; }
+  100% { opacity: 0.9; }
 }
 .hud-text {
   position: absolute; font-family: 'Share Tech Mono', monospace; font-size: 11px;
