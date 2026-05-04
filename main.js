@@ -212,31 +212,7 @@ const skillsObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.skill-item').forEach(el => skillsObserver.observe(el));
 
-// 6. Form Submission Simulation
-const form = document.getElementById('contact-form');
-const formStatus = document.getElementById('form-status');
 
-if (form) {
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    form.innerHTML = '';
-    formStatus.style.display = 'block';
-    formStatus.innerHTML = '';
-    
-    const lines = [
-      '> SIGNAL RECEIVED.',
-      '> ARYA (MAC) WILL RESPOND WITHIN 24H.',
-      '> <span class="blink">_</span>'
-    ];
-    
-    lines.forEach((line, index) => {
-      setTimeout(() => {
-        formStatus.innerHTML += line + '<br>';
-      }, index * 500);
-    });
-  });
-}
 
 // 7. Sticky Nav
 const nav = document.querySelector('.sticky-nav');
