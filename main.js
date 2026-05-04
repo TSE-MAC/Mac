@@ -1,5 +1,12 @@
 import './style.css';
 
+// 0. Background Video Speed — 1.7x
+const bgVideo = document.getElementById('bg-video');
+if (bgVideo) {
+  bgVideo.playbackRate = 1.7;
+  bgVideo.addEventListener('loadedmetadata', () => { bgVideo.playbackRate = 1.7; });
+}
+
 // 1. Custom Cursor
 const cursorDot = document.querySelector('.cursor-dot');
 let mouseX = window.innerWidth / 2;
