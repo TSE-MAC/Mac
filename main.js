@@ -2,25 +2,14 @@ import './style.css';
 
 // 1. Custom Cursor
 const cursorDot = document.querySelector('.cursor-dot');
-const cursorRing = document.querySelector('.cursor-ring');
 let mouseX = window.innerWidth / 2;
 let mouseY = window.innerHeight / 2;
-let ringX = mouseX;
-let ringY = mouseY;
 
 window.addEventListener('mousemove', (e) => {
   mouseX = e.clientX;
   mouseY = e.clientY;
   cursorDot.style.transform = `translate(calc(${mouseX}px - 50%), calc(${mouseY}px - 50%))`;
 });
-
-const loop = () => {
-  ringX += (mouseX - ringX) * 0.15;
-  ringY += (mouseY - ringY) * 0.15;
-  cursorRing.style.transform = `translate(calc(${ringX}px - 50%), calc(${ringY}px - 50%))`;
-  requestAnimationFrame(loop);
-};
-requestAnimationFrame(loop);
 
 document.querySelectorAll('a, button, input, textarea, select').forEach(el => {
   el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
