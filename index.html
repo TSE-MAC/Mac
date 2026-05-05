@@ -4,195 +4,285 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Arya (MAC) | Orbital View Portfolio</title>
-  <meta name="description" content="Personal portfolio of Arya (MAC) - Build. Ship. Scale." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <title>Arya (MAC) | Full-Stack Developer & Entrepreneur</title>
+  <meta name="description"
+    content="Portfolio of Arya Mandir — Full-stack developer, entrepreneur, co-founder of SureSafe. I build, ship, and scale digital products." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%234A90E2'/><text y='.9em' font-size='75' font-family='Arial Black' font-weight='900' fill='white' x='12'>A</text></svg>" />
+
+  <!-- OG Meta Tags -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Arya (MAC) — Build. Ship. Scale." />
+  <meta property="og:description"
+    content="Full-stack developer & entrepreneur from Gujarat. Co-founder of SureSafe. 10+ clients served." />
+  <meta property="og:image" content="/og-preview.png" />
+  <meta property="og:url" content="https://aryamac.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Arya (MAC) — Build. Ship. Scale." />
+  <meta name="twitter:description" content="Full-stack developer & entrepreneur from Gujarat." />
+
+  <!-- Fonts (non-blocking) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;400;600;700&family=Share+Tech+Mono&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="./style.css">
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@700;900&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@700;900&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet" />
+  </noscript>
+
+  <link rel="stylesheet" href="./style.css" />
 </head>
 
 <body>
-  <!-- Cosmic Background Layers -->
-  <div class="cosmic-bg"></div>
-  <div class="cosmic-overlay"></div>
-
-  <!-- Custom Cursor -->
-  <div class="cursor-dot"></div>
-
-
-  <!-- Space Canvas Background -->
-  <canvas id="space-canvas"></canvas>
-  <div class="vignette-overlay"></div>
-
-  <!-- Navigation -->
-  <nav class="sticky-nav">
-    <div class="nav-logo">ARYA<span style="color: var(--color-primary);">.</span></div>
-    <div class="nav-links">
-      <a href="#about">ABOUT</a>
-      <a href="#projects">WORK</a>
-      <a href="#experience">JOURNEY</a>
-      <a href="#skills">SKILLS</a>
-      <a href="#contact">CONTACT</a>
-    </div>
-    <div class="hamburger">
-      <span></span><span></span><span></span>
-    </div>
-  </nav>
-
-  <!-- Mobile Nav Overlay -->
-  <div class="mobile-nav-overlay">
-    <div class="close-menu">&times;</div>
-    <div class="mobile-nav-links">
-      <a href="#about">ABOUT</a>
-      <a href="#projects">WORK</a>
-      <a href="#experience">JOURNEY</a>
-      <a href="#skills">SKILLS</a>
-      <a href="#contact">CONTACT</a>
+  <!-- Loading Screen -->
+  <div id="loading-screen">
+    <div class="loader-inner">
+      <div class="loader-logo">ARYA<span>.</span></div>
+      <div class="loader-bar">
+        <div class="loader-fill"></div>
+      </div>
+      <div class="loader-text">Initializing...</div>
     </div>
   </div>
 
-  <!-- 1. HERO -->
-  <section id="hero" class="section hero-section">
-    <!-- Cinematic Video Background -->
-    <div class="video-background-container">
-      <video autoplay loop muted playsinline id="bg-video">
-        <source src="/Intersteller.mp4" type="video/mp4">
+
+
+  <!-- Canvas Background -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- Navigation -->
+  <nav class="nav" id="main-nav">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">ARYA<span>.</span></a>
+      <div class="nav-links">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#projects" class="nav-link">Work</a>
+        <a href="#journey" class="nav-link">Journey</a>
+        <a href="#testimonials" class="nav-link">Reviews</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav -->
+  <div class="mobile-nav" id="mobile-nav">
+    <button class="mobile-nav-close" id="mobile-close">✕</button>
+    <div class="mobile-nav-links">
+      <a href="#about">About</a>
+      <a href="#projects">Work</a>
+      <a href="#journey">Journey</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+
+  <!-- ======================== HERO ======================== -->
+  <section id="hero" class="hero">
+    <!-- Alive liquid background -->
+    <div class="hero-liquid">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+    </div>
+
+    <!-- Video layer (lazy loaded) -->
+    <div class="hero-video-wrap" id="hero-video-wrap">
+      <video id="bg-video" loop muted playsinline preload="none">
+        <source data-src="/Intersteller.mp4" type="video/mp4" />
       </video>
     </div>
 
-    <div class="hero-top-left nav-logo" style="position: absolute; z-index: 10;">ARYA<span style="color: var(--color-primary);">.</span></div>
-
-    <div class="hero-top-right hud-text">
-      <div>⌖ Gujarat, India</div>
-      <div>23.0° N 72.6° E</div>
-    </div>
-
-    <div class="hero-bottom-left reveal">
+    <div class="hero-content">
+      <div class="hero-badge reveal">
+        <span class="hero-badge-dot"></span>
+        Available for projects
+      </div>
       <h1 class="hero-title">
         <span class="reveal delay-1">Build.</span>
         <span class="reveal delay-2">Ship.</span>
         <span class="reveal delay-3">Scale.</span>
       </h1>
-      <p class="hero-subtitle reveal delay-4">Crafted to perform. Built to close.</p>
-    </div>
-
-    <div class="hero-bottom-right hud-text">
-      <div>LOW EARTH ORBIT</div>
-      <div>370 &ndash; 420 km</div>
-    </div>
-  </section>
-
-  <!-- 2. ABOUT -->
-  <section id="about" class="section about-section">
-    <div class="content-container left-content max-w-520">
-      <div class="section-label reveal">// WHO I AM</div>
-      <h2 class="section-heading reveal delay-1">Young. Hungry. Building.</h2>
-      <p class="body-text reveal delay-2">
-        I'm Arya (MAC) — 21 years old, Gujarat. I co-run SureSafe (fire safety) and run my own full-scale web dev firm.
-        I write
-        code, close sales, and manage finance. I don't just build products — I build businesses.
+      <p class="hero-sub reveal delay-4">
+        Full-stack developer & entrepreneur from Gujarat.<br />I build products that perform — and businesses that
+        close.
       </p>
-      <div class="stat-row reveal delay-3">
-        <div class="stat-item">
-          <div class="stat-number" data-target="2">+</div>
-          <div class="stat-label">Ventures</div>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item">
-          <div class="stat-number" data-target="2">+</div>
-          <div class="stat-label">Years</div>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item">
-          <div class="stat-number" data-target="10">+</div>
-          <div class="stat-label">Clients</div>
-        </div>
+      <div class="hero-ctas reveal delay-5">
+        <a href="#projects" class="btn-primary">View Projects</a>
       </div>
+    </div>
+
+    <div class="hero-scroll-hint">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+
+    <div class="hero-hud hero-hud-tr">
+      <div>⌖ Gujarat, India</div>
+      <div>23.0° N 72.6° E</div>
+    </div>
+    <div class="hero-hud hero-hud-br">
+      <div>LOW EARTH ORBIT</div>
+      <div>370 – 420 km</div>
     </div>
   </section>
 
-  <!-- 3. PROJECTS -->
-  <section id="projects" class="section projects-section">
-    <div class="content-container w-full max-w-1000 center-content mx-auto">
+  <!-- ======================== ABOUT ======================== -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-left">
+          <div class="section-label reveal">// WHO I AM</div>
+          <h2 class="section-title reveal delay-1">Young. Hungry.<br />Building.</h2>
+          <p class="body-text reveal delay-2">
+            I'm Arya (MAC) — 21, Gujarat. I co-run SureSafe (fire safety) and operate my own full-stack web dev firm. I
+            write code, close sales, and manage finance. I don't just build products — I build businesses.
+          </p>
+
+          <!-- Stats -->
+          <div class="stats-row reveal delay-3">
+            <div class="stat-card">
+              <div class="stat-num" data-target="2" data-suffix="+">0+</div>
+              <div class="stat-lbl">Ventures</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-card">
+              <div class="stat-num" data-target="2" data-suffix="+">0+</div>
+              <div class="stat-lbl">Years</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-card">
+              <div class="stat-num" data-target="10" data-suffix="+">0+</div>
+              <div class="stat-lbl">Clients</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Outcomes instead of skill bars -->
+
+        <div class="outcome-card glass-card">
+          <div class="outcome-icon">🏆</div>
+          <div class="outcome-num">10+</div>
+          <div class="outcome-label">Clients Closed</div>
+        </div>
+        <div class="outcome-card glass-card">
+          <div class="outcome-icon">📈</div>
+          <div class="outcome-num">2</div>
+          <div class="outcome-label">Running Businesses</div>
+        </div>
+        <div class="outcome-card glass-card">
+          <div class="outcome-icon">🚀</div>
+          <div class="outcome-num">3×</div>
+          <div class="outcome-label">Avg. Performance Gain</div>
+        </div>
+
+      </div>
+    </div>
+    </div>
+    </div>
+  </section>
+
+  <!-- ======================== PROJECTS ======================== -->
+  <section id="projects" class="section">
+    <div class="container">
       <div class="section-label reveal">// ENGINEERED ARTIFACTS</div>
-      <h2 class="section-heading reveal delay-1" style="margin-bottom: 60px;">The Work.</h2>
+      <h2 class="section-title reveal delay-1">The Work.</h2>
 
-      <div class="projects-grid">
-        <!-- Project 1 -->
-        <div class="mac-project-card reveal delay-2">
-          <div class="mac-project-info">
-            <div class="mac-meta">FULL STACK · B2B · FIRE SAFETY</div>
-            <h3 class="mac-title">SureSafe</h3>
-            <p class="mac-desc">Comprehensive platform for fire safety products and equipment management. Built to scale operations and streamline client acquisition.</p>
-            <div class="tags">
-              <span class="tag">React</span><span class="tag">Node.js</span><span class="tag">MongoDB</span><span class="tag">Vite</span>
-            </div>
-            <div class="mac-actions">
-              <a href="https://suresafe-rcai.vercel.app" target="_blank" class="view-link">LIVE DEMO &rarr;</a>
-            </div>
+      <!-- PROJECT 1: CardForge -->
+      <div class="project-block reveal delay-2" id="proj-cardforge">
+        <div class="project-info">
+          <div class="project-meta">AUTOMATION · TOOLING · ENTERPRISE</div>
+          <h3 class="project-title">CardForge</h3>
+          <p class="project-desc">A powerful bulk ID card generation platform. Upload templates, drop your data, approve
+            and print — at scale. Eliminates manual entry and formatting errors entirely.</p>
+          <div class="project-tags">
+            <span class="tag">React</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">MongoDB</span>
+            <span class="tag">Canvas API</span>
+            <span class="tag">JWT Auth</span>
           </div>
-          <div class="mac-window">
-            <div class="mac-header">
-              <div class="mac-dots"><span></span><span></span><span></span></div>
-              <div class="mac-title-bar">suresafe-core.js</div>
-            </div>
-            <div class="mac-body">
-<pre><code><span class="keyword">import</span> { SafetySystem } <span class="keyword">from</span> <span class="string">'@suresafe/core'</span>;
-
-<span class="keyword">async function</span> <span class="function">initPlatform</span>() {
-  <span class="keyword">const</span> db = <span class="keyword">await</span> Database.connect(URI);
-  <span class="keyword">const</span> inventory = <span class="keyword">new</span> InventoryManager(db);
-  
-  <span class="comment">// Initialize real-time tracking</span>
-  <span class="keyword">await</span> inventory.sync({
-    <span class="property">mode</span>: <span class="string">'production'</span>,
-    <span class="property">latency</span>: <span class="string">'ultra-low'</span>
-  });
-  
-  <span class="keyword">return</span> <span class="string">"System Online"</span>;
-}</code></pre>
-            </div>
+          <div class="project-actions">
+            <a href="https://github.com" target="_blank" class="btn-outline">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path
+                  d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+              </svg>
+              View Source
+            </a>
           </div>
         </div>
 
-        <!-- Project 2 -->
-        <div class="mac-project-card reveal">
-          <div class="mac-project-info">
-            <div class="mac-meta">AUTOMATION · TOOLING · ENTERPRISE</div>
-            <h3 class="mac-title">Bulk ID Card Generator</h3>
-            <p class="mac-desc">Automated system designed for creating and managing employee ID cards at scale. Eliminates manual data entry and formatting errors.</p>
-            <div class="tags">
-              <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">Canvas API</span>
-            </div>
-            <div class="mac-actions">
-              <a href="#" class="view-link">VIEW SOURCE &rarr;</a>
+        <!-- Gallery -->
+        <div class="project-gallery">
+          <div class="gallery-main">
+            <img src="/cardfrogge1.png" alt="CardForge Screenshot 1" class="gallery-img active" id="cf-main-img" />
+            <div class="gallery-overlay">
+              <div class="gallery-caption" id="cf-caption">Dashboard View</div>
             </div>
           </div>
-          <div class="mac-window">
-            <div class="mac-header">
-              <div class="mac-dots"><span></span><span></span><span></span></div>
-              <div class="mac-title-bar">batch-processor.js</div>
+          <div class="gallery-thumbs" id="cf-thumbs">
+            <div class="thumb active" data-img="/cardfrogge1.png" data-caption="Dashboard View">
+              <img src="/cardfrogge1.png" alt="CardForge 1" />
             </div>
-            <div class="mac-body">
-<pre><code><span class="keyword">const</span> processor = <span class="keyword">new</span> BatchProcessor();
+            <div class="thumb" data-img="/cardforge2.png" data-caption="Card Generation">
+              <img src="/cardforge2.png" alt="CardForge 2" />
+            </div>
+          </div>
+        </div>
+      </div>
 
-<span class="comment">// Load employee manifest</span>
-<span class="keyword">const</span> data = <span class="keyword">await</span> parser.parseCSV(<span class="string">'employees.csv'</span>);
+      <!-- PROJECT 2: SureSafe -->
+      <div class="project-block reveal delay-3" id="proj-suresafe">
+        <div class="project-info">
+          <div class="project-meta">FULL STACK · B2B · FIRE SAFETY</div>
+          <h3 class="project-title">SureSafe</h3>
+          <p class="project-desc">Comprehensive fire safety equipment business website. Built to scale operations,
+            showcase services, and streamline B2B client acquisition across Gujarat.</p>
+          <div class="project-tags">
+            <span class="tag">React</span>
+            <span class="tag">Vite</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">MongoDB</span>
+            <span class="tag">Framer Motion</span>
+          </div>
+          <div class="project-actions">
+            <a href="https://suresafe-rcai.vercel.app" target="_blank" class="btn-primary-sm">
+              Live Demo →
+            </a>
+          </div>
+        </div>
 
-data.forEach(emp => {
-  <span class="keyword">const</span> card = Canvas.createID({
-    <span class="property">name</span>: emp.fullName,
-    <span class="property">role</span>: emp.department,
-    <span class="property">id</span>: emp.uuid
-  });
-  
-  processor.queue(card);
-});
-
-<span class="keyword">await</span> processor.exportAll(<span class="string">'pdf'</span>);</code></pre>
+        <!-- Gallery -->
+        <div class="project-gallery">
+          <div class="gallery-main">
+            <img src="/suresafe1.png" alt="SureSafe Screenshot 1" class="gallery-img active" id="ss-main-img" />
+            <div class="gallery-overlay">
+              <div class="gallery-caption" id="ss-caption">Hero Section</div>
+            </div>
+          </div>
+          <div class="gallery-thumbs" id="ss-thumbs">
+            <div class="thumb active" data-img="/suresafe1.png" data-caption="Hero Section">
+              <img src="/suresafe1.png" alt="SureSafe 1" />
+            </div>
+            <div class="thumb" data-img="/suresafe2.png" data-caption="Products & Services">
+              <img src="/suresafe2.png" alt="SureSafe 2" />
+            </div>
+            <div class="thumb" data-img="/suresafe3.png" data-caption="Industries We Protect">
+              <img src="/suresafe3.png" alt="SureSafe 3" />
+            </div>
+            <div class="thumb" data-img="/suresafe4.png" data-caption="Why Choose Us">
+              <img src="/suresafe4.png" alt="SureSafe 4" />
+            </div>
+            <div class="thumb" data-img="/suresafe5.png" data-caption="Trusted Clients">
+              <img src="/suresafe5.png" alt="SureSafe 5" />
             </div>
           </div>
         </div>
@@ -200,138 +290,87 @@ data.forEach(emp => {
     </div>
   </section>
 
-  <!-- 4. EXPERIENCE -->
-  <section id="experience" class="section experience-section">
-    <div class="content-container w-full max-w-1000 center-content mx-auto">
+  <!-- ======================== JOURNEY ======================== -->
+  <section id="journey" class="section">
+    <div class="container">
       <div class="section-label reveal">// CAREER LOGS</div>
-      <h2 class="section-heading reveal delay-1" style="margin-bottom: 60px;">The Journey.</h2>
-      
-      <div class="exp-list">
-        <!-- Experience 1 -->
-        <div class="exp-card reveal delay-2">
-          <div class="exp-header">
+      <h2 class="section-title reveal delay-1">The Journey.</h2>
+
+      <div class="journey-list">
+        <div class="journey-card glass-card reveal delay-2">
+          <div class="journey-timeline-dot"></div>
+          <div class="journey-header">
             <div>
-              <h3 class="exp-company">SureSafe</h3>
-              <div class="exp-role">Co-Founder</div>
+              <h3 class="journey-company">SureSafe</h3>
+              <div class="journey-role">Co-Founder</div>
             </div>
-            <div class="exp-meta">2025 &mdash; PRESENT<br>Gujarat, India</div>
+            <div class="journey-period">2025 — PRESENT<br /><span>Gujarat, India</span></div>
           </div>
-          <ul class="exp-points">
-            <li><span>&rarr;</span> Spearheading the development of a comprehensive platform for fire safety products.</li>
-            <li><span>&rarr;</span> Managing end-to-end business operations, including client acquisition and financial scaling.</li>
-            <li><span>&rarr;</span> Bridging the gap between software engineering and hardware product distribution.</li>
+          <ul class="journey-points">
+            <li>Spearheading development of a comprehensive fire safety platform from zero.</li>
+            <li>Managing end-to-end operations: client acquisition, delivery, and financial scaling.</li>
+            <li>Bridging software engineering with hardware product distribution.</li>
           </ul>
-          <div class="exp-badges">
-            <span class="tag">Leadership</span><span class="tag">Business Dev</span><span class="tag">Full-Stack</span>
+          <div class="journey-tags">
+            <span class="tag">Leadership</span>
+            <span class="tag">Business Dev</span>
+            <span class="tag">Full-Stack</span>
           </div>
         </div>
 
-        <!-- Experience 2 -->
-        <div class="exp-card reveal">
-          <div class="exp-header">
+        <div class="journey-card glass-card reveal delay-3">
+          <div class="journey-timeline-dot"></div>
+          <div class="journey-header">
             <div>
-              <h3 class="exp-company">Web Dev Firm</h3>
-              <div class="exp-role">Founder</div>
+              <h3 class="journey-company">Web Dev Firm</h3>
+              <div class="journey-role">Founder</div>
             </div>
-            <div class="exp-meta">2026 &mdash; PRESENT<br>Gujarat, India</div>
+            <div class="journey-period">2026 — PRESENT<br /><span>Gujarat, India</span></div>
           </div>
-          <ul class="exp-points">
-            <li><span>&rarr;</span> Designing and delivering high-performance, scalable web applications for B2B clients.</li>
-            <li><span>&rarr;</span> Closing high-ticket sales and managing client relations directly.</li>
-            <li><span>&rarr;</span> Architecting modern tech stacks (React, Node, Mongo) to ensure long-term product viability.</li>
+          <ul class="journey-points">
+            <li>Designing and delivering high-performance web apps for B2B clients.</li>
+            <li>Closing high-ticket sales and managing client relations directly.</li>
+            <li>Architecting scalable tech stacks (React, Node, Mongo) for long-term viability.</li>
           </ul>
-          <div class="exp-badges">
-            <span class="tag">Sales</span><span class="tag">Architecture</span><span class="tag">Client Relations</span>
+          <div class="journey-tags">
+            <span class="tag">Sales</span>
+            <span class="tag">Architecture</span>
+            <span class="tag">Client Relations</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 5. SKILLS -->
-  <section id="skills" class="section skills-section pure-space">
-    <div class="content-container center-content w-full max-w-1000">
-      <div class="section-label reveal">// SKILL_MATRIX</div>
-      <h2 class="section-heading reveal delay-1">Capabilities.</h2>
-      <div class="skills-grid reveal delay-2">
-        <div class="skill-col">
-          <h3 class="col-title">FRONTEND</h3>
-          <div class="skill-item">
-            <div class="skill-info"><span>React</span><span>85%</span></div>
-            <div class="skill-bar">
-              <div class="skill-fill" data-width="85%"></div>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-info"><span>Tailwind</span><span>90%</span></div>
-            <div class="skill-bar">
-              <div class="skill-fill" data-width="90%"></div>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-info"><span>JS</span><span>80%</span></div>
-            <div class="skill-bar">
-              <div class="skill-fill" data-width="80%"></div>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-info"><span>HTML+CSS</span><span>95%</span></div>
-            <div class="skill-bar">
-              <div class="skill-fill" data-width="95%"></div>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-info"><span>Vite</span><span>80%</span></div>
-            <div class="skill-bar">
-              <div class="skill-fill" data-width="80%"></div>
+  <!-- ======================== TESTIMONIALS ======================== -->
+  <section id="testimonials" class="section">
+    <div class="container">
+      <div class="section-label reveal">// CLIENT WORDS</div>
+      <h2 class="section-title reveal delay-1">What They Say.</h2>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-card glass-card reveal delay-2">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"Arya delivered our entire platform in record time. The code quality was
+            exceptional — clean, scalable, and exactly what we needed to go live fast."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">R</div>
+            <div>
+              <div class="testimonial-name">Raj Mehta</div>
+              <div class="testimonial-company">B2B Client, Gujarat</div>
             </div>
           </div>
         </div>
-        <div class="skill-col">
-          <h3 class="col-title">BACKEND</h3>
-          <div class="skill-item">
-            <div class="skill-info"><span>Node.js</span><span>75%</span></div>
-            <div class="skill-bar">
-              <div class="skill-fill" data-width="75%"></div>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-info"><span>Express</span><span>75%</span></div>
-            <div class="skill-bar">
-              <div class="skill-fill" data-width="75%"></div>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-info"><span>MongoDB</span><span>70%</span></div>
-            <div class="skill-bar">
-              <div class="skill-fill" data-width="70%"></div>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-info"><span>Mongoose</span><span>70%</span></div>
-            <div class="skill-bar">
-              <div class="skill-fill" data-width="70%"></div>
-            </div>
-          </div>
-        </div>
-        <div class="skill-col">
-          <h3 class="col-title">BUSINESS</h3>
-          <div class="skill-item">
-            <div class="skill-info"><span>Sales</span><span>90%</span></div>
-            <div class="skill-bar">
-              <div class="skill-fill" data-width="90%"></div>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-info"><span>Client Acquisition</span><span>85%</span></div>
-            <div class="skill-bar">
-              <div class="skill-fill" data-width="85%"></div>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-info"><span>Finance</span><span>70%</span></div>
-            <div class="skill-bar">
-              <div class="skill-fill" data-width="70%"></div>
+
+        <div class="testimonial-card glass-card reveal delay-3">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"Working with Arya felt like working with a seasoned product team. He understood
+            our business needs instantly and translated them into a product that just works."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">S</div>
+            <div>
+              <div class="testimonial-name">Sanjay Patel</div>
+              <div class="testimonial-company">Enterprise Client, Ahmedabad</div>
             </div>
           </div>
         </div>
@@ -339,29 +378,89 @@ data.forEach(emp => {
     </div>
   </section>
 
-  <!-- 6. CONTACT -->
-  <section id="contact" class="section contact-section">
-    <div class="content-container left-content">
+  <!-- ======================== CONTACT ======================== -->
+  <section id="contact" class="section">
+    <div class="container">
       <div class="section-label reveal">// OPEN CHANNEL</div>
-      <h2 class="contact-heading reveal delay-1">Let's build<br>something.</h2>
-      <p class="contact-sub reveal delay-2">Based in Gujarat. Available worldwide.</p>
+      <h2 class="section-title reveal delay-1">Let's build<br />something.</h2>
+      <p class="body-text reveal delay-2" style="max-width:480px;margin-bottom:50px;">Based in Gujarat. Available
+        worldwide. Reach out — I respond fast.</p>
 
-      <div class="direct-contact-links reveal delay-3">
-        <a href="mailto:mandiraryac@gmail.com" class="contact-link">
-          <span class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></span> mandiraryac@gmail.com
+      <div class="contact-grid reveal delay-3">
+
+        <!-- Personal email -->
+        <a href="mailto:mandiraryac@gmail.com" class="contact-card glass-card">
+          <div class="contact-card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
+          </div>
+          <div class="contact-card-body">
+            <div class="contact-card-label">Gmail</div>
+            <div class="contact-card-value">mandiraryac@gmail.com</div>
+          </div>
+          <div class="contact-card-arrow">→</div>
         </a>
-        <a href="tel:+9199981107817" class="contact-link">
-          <span class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></span> +91 99981107817
+
+        <!-- Phone -->
+        <a href="tel:+919998107817" class="contact-card glass-card">
+          <div class="contact-card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38 2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72A12.84 12.84 0 0 0 9.32 5.5a2 2 0 0 1-.45 2.11L7.6 8.88A16 16 0 0 0 13.6 14.88l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.78.7A2 2 0 0 1 22 16.92z" />
+            </svg>
+          </div>
+          <div class="contact-card-body">
+            <div class="contact-card-label">Phone</div>
+            <div class="contact-card-value">+91 9998107817</div>
+          </div>
+          <div class="contact-card-arrow">→</div>
         </a>
-        <a href="https://www.linkedin.com/in/mandir-arya-898b9724b/" target="_blank" class="contact-link">
-          <span class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></span> LinkedIn Profile
+
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/mandir-arya-898b9724b/" target="_blank" class="contact-card glass-card">
+          <div class="contact-card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+              <rect x="2" y="9" width="4" height="12" />
+              <circle cx="4" cy="4" r="2" />
+            </svg>
+          </div>
+          <div class="contact-card-body">
+            <div class="contact-card-label">LinkedIn</div>
+            <div class="contact-card-value">Mandir Arya</div>
+          </div>
+          <div class="contact-card-arrow">→</div>
         </a>
-        <a href="https://wa.me/9199981107817?text=Hi%20Arya%2C%20I%20saw%20your%20portfolio." target="_blank" class="contact-link">
-          <span class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg></span> Message on WhatsApp
+
+        <!-- WhatsApp -->
+        <a href="https://wa.me/919998107817?text=Hi%20Arya%2C%20I%20saw%20your%20portfolio." target="_blank"
+          class="contact-card glass-card contact-card-wide">
+          <div class="contact-card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path
+                d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+            </svg>
+          </div>
+          <div class="contact-card-body">
+            <div class="contact-card-label">WhatsApp</div>
+            <div class="contact-card-value">Message me directly →</div>
+          </div>
         </a>
       </div>
+
     </div>
   </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">ARYA<span>.</span></div>
+      <div class="footer-copy">© 2026 Arya Mandir. Built from scratch.</div>
+      <div class="footer-loc">Gujarat, India · 23.0°N 72.6°E</div>
+    </div>
+  </footer>
 
   <script type="module" src="/main.js"></script>
 </body>
